@@ -10,8 +10,6 @@ class PostViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     lookup_field = 'slug'
 
-    def get_queryset(self):
-        return Post.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         print(self.request.data)
@@ -29,6 +27,6 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return CustomUser.objects.filter(id=self.request.user.id)
-
+    
 
 
