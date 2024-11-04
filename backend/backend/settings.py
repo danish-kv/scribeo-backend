@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from datetime import timedelta
+import cloudinary_storage
+import cloudinary
 
 load_dotenv()
 
@@ -32,10 +34,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
+    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
+    
     'users',
     'blog',
 ]
@@ -114,12 +121,29 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'drvhpnyot',
+    'API_KEY': '485713485145792',
+    'API_SECRET': '485713485145792rp691AxmGxPcJqECzi5XdrWFHp8',
+    
+}
+
+
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
+print(cloudinary.config().cloud_name)
+print(cloudinary.config().api_key)
+
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
