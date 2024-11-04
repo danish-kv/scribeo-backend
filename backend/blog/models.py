@@ -48,7 +48,7 @@ class Post(BaseModel):
 
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='posts')
-    tags = models.ManyToManyField(Tag, blank=True, related_name='posts', null=True)
+    tags = models.ManyToManyField(Tag, blank=True, related_name='posts')
 
     views_count = models.PositiveIntegerField(default=0)
     likes_count = models.PositiveIntegerField(default=0)
