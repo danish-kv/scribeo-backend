@@ -41,7 +41,7 @@ class Post(BaseModel):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts')
     title = models.CharField(max_length=250)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(unique=True, blank=True, max_length=250)  
     subtitle = models.CharField(max_length=250, blank=True)
     content = models.TextField()
     image = models.ImageField(upload_to='posts/', null=True, blank=True)
