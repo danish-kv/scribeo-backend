@@ -5,12 +5,15 @@ from users.models import CustomUser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from common.base_pagination import PostPagination
+
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]
     lookup_field = 'slug'
+    pagination_class = PostPagination
 
 
     def perform_create(self, serializer):
