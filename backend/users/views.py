@@ -81,7 +81,6 @@ class Logout(APIView):
             return Response({"detail": "Invalid or expired token."}, status=status.HTTP_400_BAD_REQUEST)
 
         except Exception as e:
-            # General error handling
             print(e)
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
