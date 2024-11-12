@@ -4,7 +4,7 @@ services:
     command: ["gunicorn", "--bind", ":8000", "backend.wsgi:application"]
     volumes:
       - .:/app
-      - media_volume:/app/media/
+      - scribeo-media_volume:/app/media/
     ports:
       - "8000:8000"
     depends_on:
@@ -18,7 +18,7 @@ services:
   scribeo-db:
     image: postgres
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - scribeo-db-data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -29,8 +29,8 @@ services:
   
 
 volumes:
-  db_data:
-  media_volume:
+  scribeo-db-data:
+  scribeo-media_volume:
 
 networks:
   scribeo-network:
