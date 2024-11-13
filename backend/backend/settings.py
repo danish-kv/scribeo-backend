@@ -157,8 +157,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:5173/',
-    "https://scribeo.muhammeddanish.site"
+    'http://localhost:5173/',   
+    'https://scribeo.vercel.app', 
+    'https://scribeo.muhammeddanish.site', 
 ]
 
 
