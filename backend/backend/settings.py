@@ -160,12 +160,8 @@ REST_FRAMEWORK = {
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:5173/',   
-    'https://scribeo.vercel.app', 
-    'https://scribeo.muhammeddanish.site', 
-]
-
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=10), 
